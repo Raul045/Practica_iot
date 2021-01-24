@@ -1,14 +1,17 @@
 import json
 
-class Persona:             
+class Persona:         
+    registro = 0    
     Lista = []
     data = {}
     data['Lista'] = []
 
-    def __init__(self, nombre=None, edad=None, telefono=None):
+    def __init__(self, matricula = None ,nombre=None, edad=None, telefono=None, p=None):
+        self.matricula = matricula
         self.nombre=nombre
         self.edad=edad
         self.telefono=telefono
+        p = 1
     
     def Registro(self,nombres,edadn,telefonon):
         newPerson = Persona(nombres,edadn,telefonon)
@@ -21,6 +24,14 @@ class Persona:
     def mostrarPer(self):
         leer = json.loads(open('Personas.json').read())
         print(leer)
+
+    def Disponibles(self, miembro, prestamosDis):
+        for mi in self.Lista:
+            if miembro == mi.matricula:
+                mi.p += prestamosDis
+            return True
+        return False
+
 
 def reconPersonas(persona):
     if isinstance(persona,Persona):

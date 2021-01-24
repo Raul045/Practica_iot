@@ -21,7 +21,13 @@ def RegistraNPrestamo(usu, materia, can):
     datosValidados = (usu,materia,can)
     fecha = str(datetime.datetime.now())
     prestamo = Prestamos.RegistroPrestamo(usu, materia, can, fecha)
-        
+
+def RegistrarNDevoluciones(folios):
+    devolucion = Prestamos.RegistroDevolucion(folios)
+    if devolucion:
+      print('| Devolucion Exitosa | Que tenga buen dia')
+    else: print('| Devolucion Fallida | Verifique su folio')
+
                 
 
 menu = """
@@ -80,10 +86,12 @@ while pop == True:
 
     elif opcion == "6":
         print("->Entregar Material<-")
-        Clase_Accion.Minfo()
+        folios = int(input("Numero de folio porfavor: "))
+        RegistrarNDevoluciones(folios)
 
     elif opcion == "7":
         print("->INFORMACION<-")
+        print(Prestamos.VerPrestamos())
     
     elif opcion == "8":
         print("Hasta luego....")

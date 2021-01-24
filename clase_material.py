@@ -1,14 +1,17 @@
 import json
 
 class Material():
+  registro = 0
   Material = []
   data = {}
   data['Material'] = []
 
-  def __init__(self, articulo=None):
-    self.articulo       = articulo
+  def __init__(self,regist =None ,articulo=None):
+    self.regist = regist
+    self.articulo  = articulo
 
   def RegistroArticulo(self, articulo):
+    self.registro += 1
     newMaterial = Material(articulo)
     self.Material.append(newMaterial)
     self.data['Material'].append(reconMateriales(newMaterial))
@@ -31,16 +34,11 @@ class Material():
         break
     else: print("| Prestamo Rechazado|El articulo solicitado no existe")
   
-  def CantidadInventario(self, articulo, cantidad):
-    for a in self.ListaArticulos:
-      if articulo == a.Id:
-        a.inventario += cantidad
-        return True
-      break
 
 def reconMateriales(material):
   if isinstance(material,Material):
     return {
+      'ID'         : material.regist,
       'Material'   : material.articulo
     }
   raise TypeError(f'El objeto {material} no es de tipo Persona')

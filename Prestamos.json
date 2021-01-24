@@ -1,18 +1,11 @@
 {
     "Prestamos": [
         {
+            "folio": 1,
             "Nombre": "Raul",
-            "material": "balon",
-            "cantidad": "4",
-            "fPrestamo": "2021-01-23 22:09:54.528835",
-            "devuelto": false,
-            "fDevolucion": ""
-        },
-        {
-            "Nombre": "jhgf",
-            "material": "pelota",
-            "cantidad": "8",
-            "fPrestamo": "2021-01-23 22:10:19.552722",
+            "material": "balones",
+            "cantidad": "2",
+            "fPrestamo": "2021-01-23 23:28:34.037913",
             "devuelto": false,
             "fDevolucion": ""
         }

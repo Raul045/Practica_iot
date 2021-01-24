@@ -1,5 +1,6 @@
 import json
 import datetime
+
 from Clase_Persona import Persona as p
 from clase_material import Material as m
 
@@ -23,7 +24,7 @@ class Prestamo:
 
     def RegistroPrestamo(self, usuarion, materialn, cantidadn, fechan):
         self.regis += 1
-        newPrestamo = Prestamo(usuarion, materialn, cantidadn, fechan)
+        newPrestamo = Prestamo(self.regis, usuarion, materialn, cantidadn, fechan)
         self.Prestamos.append(newPrestamo)
         self.data['Prestamos'].append(reconPrestamos(newPrestamo))
         with open('Prestamos.json', 'w') as Pre:
@@ -32,20 +33,20 @@ class Prestamo:
             if self.regis == k.folio:
                 return(newPrestamo)
 
-    def RegistroDevolucion(self, folion):
+    def RegistroDevolucion(self, folio):
         i = 0
         for j in self.Prestamos:
-            if folion == j.folio:
+            if folio == j.folio:
                 fechaD = str(datetime.datetime.now())
-                r.devuelto = True
-                r.fDevolucion = fechaD
-                usuario = j.usuario
+                j.devuelto = True
+                j.fDevolucion = fechaD
+                Usuario = j.Usuario
                 material = j.material
                 cantidad = j.cantidad
-                disponibles = p.PrestamosDisponibles(usuario, 1)
-                if disponibles:
-                    disponibles = a.CantidadInventario(material, cantidad)
-                    return True
+                disponibles = P.Disponibles(Usuario, 1)
+                # if disponibles:
+                #     disponibles = a.CantidadInventario(material, cantidad)
+                #     return True
         return False
                 
     
@@ -53,38 +54,8 @@ class Prestamo:
         leerp = json.loads(open('Prestamos.json').read())
         print(leerp)
 
-    def ValidarDatosPrestamo(self, usua,mar,cant):
-        #Validar que haya usuarios y tengan prestamos disponibles
-        pase = p.ValidarDatosPersona(usua)
-        if pase:
-            pase =a.ValidarDatosArticulo(mar,cant)
-            if pase:
-                disponibles = p.PrestamosDisponibles(miembro, -1)
-                if disponibles:
-                    disponibles = a.CantidadInventario(articulo, -cantidad)
-                    return True
-        else: False
           
-        # for m in P.ListaMiembros:
-        #     if miembro == m.Id:
-        #         if m.prestamos > 0:
-        #             #Validar que haya articulos y cantidad requerida
-        #             for ar in A.ListaArticulos:
-        #                 if articulo == ar.Id:
-        #                     if ar.inventario > 0:
-        #                         if cantidad <= ar.inventario:
-        #                             return True
-        #                         else: print("| Prestamo Rechazado|No se tiene la cantidad suficiente del ariticulo")
-        #                         break
-        #                     else: print("| Prestamo Rechazado|Articulo solicitado agotado")
-        #                     break
-        #             else: print("| Prestamo Rechazado|El articulo solicitado no existe")
-        #             break
-        #         else: print("| Prestamo Rechazado|No le quedan mas prestamos disponibles")
-        #         break
-        #     else: print("| Prestamo Rechazado|Miembro no registrado")
-        # return False
-
+       
 
 
 def reconPrestamos(prestamo):
