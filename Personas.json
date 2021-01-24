@@ -1,0 +1,14 @@
+{
+    "Lista": [
+        {
+            "nombre": "Raul",
+            "edad": "19",
+            "telefono": "876412"
+        },
+        {
+            "nombre": "alejandro",
+            "edad": "19",
+            "telefono": "876312"
+        }
+    ]
+}

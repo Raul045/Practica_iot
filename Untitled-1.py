@@ -1,16 +1,42 @@
-import clase_material
-import Clase_Accion
-import Clase_Persona
+import datetime
+
+from clase_material import Material as material
+
+from Clase_Persona import Persona 
+
+from Clase_Accion import Prestamo as pre
+
+
+m = material()
+P = Persona()
+Prestamos = pre()
+
+def RegistrarNpersona():
+    coas = P.Registro(nombres,edadn,telefonon)
+
+def RegistrarNMaterial():
+    mat = m.RegistroArticulo(nmaterial)
+
+def RegistraNPrestamo(usu, materia, can):
+    datosValidados = (usu,materia,can)
+    fecha = str(datetime.datetime.now())
+    prestamo = Prestamos.RegistroPrestamo(usu, materia, can, fecha)
+        
+                
+
 menu = """
 |||---->Bievenido al centro deportivo<----||||
 °A continuacion te mostraremos las opciones disponibles°
-------->Menu<------
-1.- Agregar usuario
-2.- Informacion del sistema
-3.- Entregar material
-4.- Recibir material
-5.- Informacion de Pendientes
-6.- Salir 
+------->Menu<------------------
+1.- Agregar usuario           |
+2.- Informacion del sistema   |
+3.- Agregar Material          |
+4.- Ver Material              |
+5.- Entregar Material         |
+6.- Recibir Material          |
+7.- Informacion               |
+8.- Salir                     |
+-------------------------------
 """
 pop = True
 while pop == True:
@@ -20,29 +46,46 @@ while pop == True:
     if opcion == "1":
         print("------------------------------")
         print("->Agregar Usuario<-")
-        Clase_Accion.Registrar()
+        nombres = input("Nombre de la persona: ")
+        edadn = input("Edad: ")
+        telefonon = input("Telefono: ")
+        RegistrarNpersona()
         print("Bien el usuario ha sido registrado")
         print("------------------------------")
 
     elif opcion == "2":
         print("---------------------------------")
         print("->Los usuarios registrados son: <-")
-        print(Clase_Accion.Mostrar())
+        print(P.mostrarPer())
         print("---------------------------------")
     
+    
     elif opcion == "3":
-        print("->PEDIDOS<-")
-        Clase_Accion.Pedir()
+        print("->Crear Articulos<-")
+        nmaterial = input("Porfavor coloca el nombre del articulo: ")
+        RegistrarNMaterial()
+        print("Articulo registrado!!!")
     
     elif opcion == "4":
-        print("->Entregar material<-")
-        Clase_Accion.Entregar()
-
+        print("->Ver Material<-")
+        print(m.verMateriales())
+    
     elif opcion == "5":
-        print("->informacion<-")
-        Clase_Accion.Minfo()
+        print("->PEDIDOS<-")
+        usu = input("Nombre del usuario: ")
+        materia = input("Que material es que elegiste: ")
+        can = input("Cantidad: ")
+        print("Bien hecho el prestamo fue echo correctamente")
+        RegistraNPrestamo(usu,materia,can)
 
     elif opcion == "6":
+        print("->Entregar Material<-")
+        Clase_Accion.Minfo()
+
+    elif opcion == "7":
+        print("->INFORMACION<-")
+    
+    elif opcion == "8":
         print("Hasta luego....")
         pop = False
     

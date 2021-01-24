@@ -1,16 +1,36 @@
-class Persona():
-    materiaP = ""
-    cantidad = 0
-    fechaP = ""
-    fechaD = ""
-    bolsa = "" 
-    nombreMaterial = ""
-    def __init__(self, nombre, edad, telefono):
-        self.nombre = nombre
-        self.edad = edad
-        self.telefono = telefono
+import json
+
+class Persona:             
+    Lista = []
+    data = {}
+    data['Lista'] = []
+
+    def __init__(self, nombre=None, edad=None, telefono=None):
+        self.nombre=nombre
+        self.edad=edad
+        self.telefono=telefono
     
-    def __str__(self):
-        return "Usuario: " + self.nombre + "\nEdad: " + self.edad + "\nTelefono: " + self.telefono
+    def Registro(self,nombres,edadn,telefonon):
+        newPerson = Persona(nombres,edadn,telefonon)
+        self.Lista.append(newPerson)
+        self.data['Lista'].append(reconPersonas(newPerson))
+        with open('Personas.json','w') as p:
+            json.dump(self.data, p, indent=4)
     
+
+    def mostrarPer(self):
+        leer = json.loads(open('Personas.json').read())
+        print(leer)
+
+def reconPersonas(persona):
+    if isinstance(persona,Persona):
+        return{
+            'nombre' : persona.nombre,
+            'edad' : persona.edad,
+            'telefono' : persona.telefono
+        }
+    raise TypeError(f'El objeto de {persona} no es del mismo tipo')
+
+
+
         
