@@ -1,10 +1,8 @@
 {
-    "Material": [
+    "Materiales": [
         {
-            "Material": "balon"
-        },
-        {
-            "Material": "Pelotas"
+            "ID": 1,
+            "Material": "Silvatos"
         }
     ]
 }

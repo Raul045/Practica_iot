@@ -44,9 +44,9 @@ class Prestamo:
                 material = j.material
                 cantidad = j.cantidad
                 disponibles = P.Disponibles(Usuario, 1)
-                # if disponibles:
-                #     disponibles = a.CantidadInventario(material, cantidad)
-                #     return True
+                if disponibles:
+                    disponibles = m.Bodega(material, cantidad)
+                    return True
         return False
                 
     

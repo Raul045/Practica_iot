@@ -2,10 +2,10 @@
     "Prestamos": [
         {
             "folio": 1,
-            "Nombre": "Raul",
-            "material": "balones",
+            "Nombre": "Ejemplo",
+            "material": "Silvatos",
             "cantidad": "2",
-            "fPrestamo": "2021-01-23 23:28:34.037913",
+            "fPrestamo": "2021-02-07 20:45:20.444347",
             "devuelto": false,
             "fDevolucion": ""
         }
